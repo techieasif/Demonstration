@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>954122990655-rn0i3qplgse79orjotucsgankgvdiuc6.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.954122990655-rn0i3qplgse79orjotucsgankgvdiuc6</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>954122990655-9e9lldae3hotb6086fvlen16rvj81abl.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCiGch5-dQjO8syMYocgeBBm0gWwXfcIaA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>954122990655</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.techieasif.assignmentwebkulasif</string>
+	<key>PROJECT_ID</key>
+	<string>webkul-assignment-asif</string>
+	<key>STORAGE_BUCKET</key>
+	<string>webkul-assignment-asif.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:954122990655:ios:5dc27917b0ff50797bb48a</string>
+	<key>DATABASE_URL</key>
+	<string>https://webkul-assignment-asif.firebaseio.com</string>
+</dict>
+</plist>

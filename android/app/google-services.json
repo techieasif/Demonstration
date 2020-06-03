@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "954122990655",
+    "firebase_url": "https://webkul-assignment-asif.firebaseio.com",
+    "project_id": "webkul-assignment-asif",
+    "storage_bucket": "webkul-assignment-asif.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:954122990655:android:2ad424bb40111b957bb48a",
+        "android_client_info": {
+          "package_name": "com.techieasif.assignmentwebkulasif"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "954122990655-9e9lldae3hotb6086fvlen16rvj81abl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.techieasif.assignmentwebkulasif",
+            "certificate_hash": "24ad5ac23966dd1bf308ade6ccf48866579e4a36"
+          }
+        },
+        {
+          "client_id": "954122990655-iurjg0eugesvqod2ptsqpc0qln3s656i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFz5fjsCIM9sGPkZsG0EHDSonJ7nr-ieY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "954122990655-iurjg0eugesvqod2ptsqpc0qln3s656i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "954122990655-rn0i3qplgse79orjotucsgankgvdiuc6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.techieasif.assignmentwebkulasif"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
