@@ -1,4 +1,4 @@
-import 'package:assignmentwebkulasif/src/pages/Login/PhoneLogin/pages/phoneLoginNew.dart';
+import 'package:assignmentwebkulasif/src/UI/Login/PhoneLogin/pages/phoneLoginNew.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 class UserPage extends StatefulWidget {

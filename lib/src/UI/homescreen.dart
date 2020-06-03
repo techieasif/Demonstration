@@ -1,4 +1,4 @@
-import 'package:assignmentwebkulasif/src/pages/Login/loginOptions.dart';
+import 'package:assignmentwebkulasif/src/UI/Login/loginOptions.dart';
 import 'package:assignmentwebkulasif/src/shared_wigets/optionWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

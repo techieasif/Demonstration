@@ -1,10 +1,12 @@
-import 'package:assignmentwebkulasif/src/pages/Login/PhoneLogin/Bloc/bloc.dart';
-import 'package:assignmentwebkulasif/src/pages/Login/PhoneLogin/pages/phoneLoginForm.dart';
-import 'package:assignmentwebkulasif/src/pages/Login/loginOptions.dart';
+import 'package:assignmentwebkulasif/src/UI/Login/PhoneLogin/Bloc/bloc.dart';
+import 'package:assignmentwebkulasif/src/UI/Login/PhoneLogin/pages/phoneLoginForm.dart';
+import 'package:assignmentwebkulasif/src/UI/Login/loginOptions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'src/pages/homescreen.dart';
+import 'bloc_delegate.dart';
+import 'src/UI/homescreen.dart';
 void main() {
+  BlocSupervisor.delegate = SimpleBlocDelegate();
   runApp(MyApp());
 }
 

@@ -1,9 +1,9 @@
 import 'package:assignmentwebkulasif/src/Helpers/formValidators.dart';
 import 'package:assignmentwebkulasif/src/appStyles/textFieldDecorations.dart';
-import 'package:assignmentwebkulasif/src/pages/Login/PhoneLogin/Bloc/bloc.dart';
-import 'package:assignmentwebkulasif/src/pages/Login/PhoneLogin/pages/phoneLoginSuccess.dart';
-import 'package:assignmentwebkulasif/src/pages/Login/PhoneLogin/services/phoneLoginService.dart';
-import 'package:assignmentwebkulasif/src/pages/Login/PhoneLogin/widgets/bubbles.dart';
+import 'package:assignmentwebkulasif/src/UI/Login/PhoneLogin/Bloc/bloc.dart';
+import 'package:assignmentwebkulasif/src/UI/Login/PhoneLogin/pages/phoneLoginSuccess.dart';
+import 'package:assignmentwebkulasif/src/UI/Login/PhoneLogin/services/phoneLoginService.dart';
+import 'package:assignmentwebkulasif/src/UI/Login/PhoneLogin/widgets/bubbles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
