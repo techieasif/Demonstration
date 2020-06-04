@@ -180,17 +180,6 @@ class _SelectMultipleImagesState extends State<SelectMultipleImages> {
       return Text('No images selected.');
     } else {
       return SliderWidget(imageList: _imgs, imageBorderRadius: BorderRadius.circular(8.0),);
-//        GridView.count(
-//          crossAxisCount: 2,
-//          childAspectRatio: 1.0,
-//          padding: EdgeInsets.all(4.0),
-//          mainAxisSpacing: 4.0,
-//          crossAxisSpacing: 4.0,
-//          children: _imgs.map((File img) {
-//            return GridTile(child: Image.file(img, fit: BoxFit.contain),
-//            );
-//          }).toList(),
-//      );
     }
   }
 
