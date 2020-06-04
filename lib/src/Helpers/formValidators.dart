@@ -17,6 +17,16 @@ class FormValidators{
     }
     return null;
   }
+  static String urlValidator(String value) {
+    if (value.isEmpty) {
+      return 'Please enter url';
+    }
+    else if (!value.contains('http')) {
+      return 'Please enter valid url';
+    }
+
+    return null;
+  }
 
   static String phoneNumberValidator(value) {
     if (value.isEmpty) {
