@@ -87,6 +87,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:multi_media_picker/multi_media_picker.dart';
 import 'package:video_player/video_player.dart';
+
+import 'imageSliderWidget.dart';
+
 class SelectMultipleImages extends StatefulWidget {
   @override
   _SelectMultipleImagesState createState() => _SelectMultipleImagesState();
@@ -100,8 +103,9 @@ class _SelectMultipleImagesState extends State<SelectMultipleImages> {
 
   _onImageButtonPressed(ImageSource source, {bool singleImage = false}) async {
     var imgs;
-    if(!isVideo){
-      imgs = await MultiMediaPicker.pickImages(source: source, singleImage: singleImage);
+    if (!isVideo) {
+      imgs = await MultiMediaPicker.pickImages(
+          source: source, singleImage: singleImage);
     }
     setState(() {
       if (_controller != null) {
@@ -172,19 +176,21 @@ class _SelectMultipleImagesState extends State<SelectMultipleImages> {
   }
 
   Widget _previewImages() {
-    if(_imgs == null){
+    if (_imgs == null) {
       return Text('No images selected.');
     } else {
-      return GridView.count(
-          crossAxisCount: 2,
-          childAspectRatio: 1.0,
-          padding: EdgeInsets.all(4.0),
-          mainAxisSpacing: 4.0,
-          crossAxisSpacing: 4.0,
-          children: _imgs.map((File img) {
-            return GridTile(
-                child: Image.file(img, fit: BoxFit.contain));
-          }).toList());
+      return SliderWidget(imageList: _imgs, imageBorderRadius: BorderRadius.circular(8.0),);
+//        GridView.count(
+//          crossAxisCount: 2,
+//          childAspectRatio: 1.0,
+//          padding: EdgeInsets.all(4.0),
+//          mainAxisSpacing: 4.0,
+//          crossAxisSpacing: 4.0,
+//          children: _imgs.map((File img) {
+//            return GridTile(child: Image.file(img, fit: BoxFit.contain),
+//            );
+//          }).toList(),
+//      );
     }
   }
 
@@ -193,7 +199,7 @@ class _SelectMultipleImagesState extends State<SelectMultipleImages> {
     return Scaffold(
       appBar: AppBar(
 //        title: Text(widget.title),
-      ),
+          ),
       body: Center(
         child: isVideo ? _previewVideo(_controller) : _previewImages(),
       ),
@@ -203,60 +209,23 @@ class _SelectMultipleImagesState extends State<SelectMultipleImages> {
           FloatingActionButton(
             onPressed: () {
               isVideo = false;
-              _onImageButtonPressed(ImageSource.gallery, singleImage: true);
+              _onImageButtonPressed(ImageSource.gallery, singleImage: false);
             },
-            heroTag: 'image0',
-            tooltip: 'Pick Image from gallery',
+            heroTag: 'fab1',
+            tooltip: 'Pick Images from gallery',
             child: Icon(Icons.photo_library),
           ),
           Padding(
             padding: EdgeInsets.only(top: 16.0),
             child: FloatingActionButton(
-              onPressed: () {
-                isVideo = false;
-                _onImageButtonPressed(ImageSource.gallery);
-              },
-              heroTag: 'image1',
-              tooltip: 'Pick Images from gallery',
-              child: Icon(Icons.photo_album),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 16.0),
-            child: FloatingActionButton(
-              onPressed: () {
-                isVideo = false;
-                _onImageButtonPressed(ImageSource.camera);
-              },
-              heroTag: 'image2',
-              tooltip: 'Take a Photo',
-              child: const Icon(Icons.camera_alt),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 16.0),
-            child: FloatingActionButton(
               backgroundColor: Colors.red,
               onPressed: () {
                 isVideo = true;
                 _onImageButtonPressed(ImageSource.gallery);
               },
-              heroTag: 'video0',
+              heroTag: 'fab2',
               tooltip: 'Pick Video from gallery',
               child: Icon(Icons.video_library),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 16.0),
-            child: FloatingActionButton(
-              backgroundColor: Colors.red,
-              onPressed: () {
-                isVideo = true;
-                _onImageButtonPressed(ImageSource.camera);
-              },
-              heroTag: 'video1',
-              tooltip: 'Take a Video',
-              child: Icon(Icons.videocam),
             ),
           ),
         ],
@@ -264,6 +233,7 @@ class _SelectMultipleImagesState extends State<SelectMultipleImages> {
     );
   }
 }
+
 class AspectRatioVideo extends StatefulWidget {
   final VideoPlayerController controller;
 
