@@ -1,89 +1,5 @@
-//import 'package:flutter/material.dart';
-//import 'dart:async';
-//import 'package:multi_image_picker/multi_image_picker.dart';
-//class SelectMultipleImagesScreen extends StatefulWidget {
-//  @override
-//  _SelectMultipleImagesScreenState createState() => _SelectMultipleImagesScreenState();
-//}
-//
-//class _SelectMultipleImagesScreenState extends State<SelectMultipleImagesScreen> {
-//  List<Asset> images = List<Asset>();
-//  String _error;
-//
-//  @override
-//  void initState() {
-//    super.initState();
-//  }
-//
-//  Widget buildGridView() {
-//    if (images != null)
-//      return GridView.count(
-//        crossAxisCount: 3,
-//        children: List.generate(images.length, (index) {
-//          Asset asset = images[index];
-//          return AssetThumb(
-//            asset: asset,
-//            width: 300,
-//            height: 300,
-//          );
-//        }),
-//      );
-//    else
-//      return Container(color: Colors.white);
-//  }
-//
-//  Future<void> loadAssets() async {
-//    setState(() {
-//      images = List<Asset>();
-//    });
-//
-//    List<Asset> resultList;
-//    String error;
-//
-//    try {
-//      resultList = await MultiImagePicker.pickImages(
-//        maxImages: 5,
-//      );
-//    } on Exception catch (e) {
-//      error = e.toString();
-//    }
-//
-//    // If the widget was removed from the tree while the asynchronous platform
-//    // message was in flight, we want to discard the reply rather than calling
-//    // setState to update our non-existent appearance.
-//    if (!mounted) return;
-//
-//    setState(() {
-//      images = resultList;
-//      if (error == null) _error = 'No Error Dectected';
-//    });
-//  }
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return
-//    Scaffold(
-//      appBar:  AppBar(
-//        title: const Text('Select Images'),
-//      ),
-//      body: Column(
-//        children: <Widget>[
-//          Center(child: Text('Error: $_error')),
-//          RaisedButton(
-//            child: Text("Pick images"),
-//            onPressed: loadAssets,
-//          ),
-//          Expanded(
-//            child: buildGridView(),
-//          )
-//        ],
-//      ),
-//    );
-//  }
-//}
-//import 'dart:async';
 import 'dart:io';
-
+import '../../../src/shared_wigets/themeChange.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_media_picker/multi_media_picker.dart';
 import 'package:video_player/video_player.dart';
@@ -178,8 +94,14 @@ class _SelectMultipleImagesState extends State<SelectMultipleImages> {
   Widget _previewImages() {
     if (_imgs == null) {
       return Text('No images selected.');
+    } else if (_imgs.length > 5) {
+      return Text(
+          'More than 5 images Selected \n Please select up to 5 images');
     } else {
-      return SliderWidget(imageList: _imgs, imageBorderRadius: BorderRadius.circular(8.0),);
+      return SliderWidget(
+        imageList: _imgs,
+        imageBorderRadius: BorderRadius.circular(8.0),
+      );
     }
   }
 
@@ -187,8 +109,15 @@ class _SelectMultipleImagesState extends State<SelectMultipleImages> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-//        title: Text(widget.title),
-          ),
+        title: Text("Create Show"),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.lightbulb_outline),
+              onPressed: () {
+                changeTheme(context);
+              })
+        ],
+      ),
       body: Center(
         child: isVideo ? _previewVideo(_controller) : _previewImages(),
       ),
@@ -229,7 +158,7 @@ class AspectRatioVideo extends StatefulWidget {
   AspectRatioVideo(this.controller);
 
   @override
-  AspectRatioVideoState createState() => new AspectRatioVideoState();
+  AspectRatioVideoState createState() =>  AspectRatioVideoState();
 }
 
 class AspectRatioVideoState extends State<AspectRatioVideo> {
@@ -257,14 +186,14 @@ class AspectRatioVideoState extends State<AspectRatioVideo> {
   Widget build(BuildContext context) {
     if (initialized) {
       final Size size = controller.value.size;
-      return new Center(
-        child: new AspectRatio(
+      return Center(
+        child: AspectRatio(
           aspectRatio: size.width / size.height,
-          child: new VideoPlayer(controller),
+          child: VideoPlayer(controller),
         ),
       );
     } else {
-      return new Container();
+      return Container();
     }
   }
 }

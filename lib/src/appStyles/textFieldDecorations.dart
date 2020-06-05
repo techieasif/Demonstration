@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-InputDecoration textFieldDecoration({@required hintText}) {
+InputDecoration textFieldDecoration({@required hintText, BuildContext context}) {
+  bool isDark = Theme.of(context).brightness == Brightness.dark;
   return InputDecoration(
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
@@ -9,10 +10,13 @@ InputDecoration textFieldDecoration({@required hintText}) {
         style: BorderStyle.none,
       ),
     ),
-    fillColor: Colors.grey.shade100,
+    fillColor: isDark ? null : Colors.grey.shade100,
     contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
     filled: true,
     hintText: hintText,
-    hintStyle: TextStyle(fontSize: 14),
+
+
+
+//    hintStyle: isDark
   );
 }

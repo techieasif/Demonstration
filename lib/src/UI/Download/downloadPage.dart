@@ -1,12 +1,11 @@
 import 'dart:io';
-
-import 'package:assignmentwebkulasif/src/Helpers/formValidators.dart';
-import 'package:assignmentwebkulasif/src/appStyles/containerDecoration.dart';
-import 'package:assignmentwebkulasif/src/appStyles/textFieldDecorations.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
-import 'package:path/path.dart';
+import '../../../src/Helpers/formValidators.dart';
+import '../../../src/appStyles/containerDecoration.dart';
+import '../../../src/appStyles/textFieldDecorations.dart';
+import '../../../src/shared_wigets/themeChange.dart';
 
 class DownloadImage extends StatefulWidget {
   @override
@@ -29,6 +28,17 @@ class _DownloadImageState extends State<DownloadImage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Download"),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.lightbulb_outline),
+              onPressed: (){
+                changeTheme(context);
+              }
+          )
+        ],
+      ),
       key: _scfKey,
       floatingActionButton: FloatingActionButton.extended(
           label: Text("${_received ~/ 1024}/${_total ~/ 1024} KB"),
@@ -55,8 +65,9 @@ class _DownloadImageState extends State<DownloadImage> {
                     keyboardType: TextInputType.text,
                     maxLines: 6,
                     minLines: 1,
+                    style: Theme.of(context).textTheme.bodyText1,
                     validator: FormValidators.urlValidator,
-                    decoration: textFieldDecoration(hintText: "url "),
+                    decoration: textFieldDecoration(hintText: "url ", context: context),
                     onChanged: (value) {
                       this.enteredUrl = value;
                       setState(() {
@@ -102,7 +113,7 @@ class _DownloadImageState extends State<DownloadImage> {
           }
         }
 
-        final file = File("$_dir/fileWebkul");
+        final file = File("$_dir/webkul");
         await file.writeAsBytes(_bytes);
         _scfKey.currentState.showSnackBar(SnackBar(
           content: Text("Download Complete, location $file"),

@@ -24,24 +24,25 @@ class ImageSliderWidgetState extends State<SliderWidget> {
   List<Widget> _pages = [];
   final _controller = PageController();
 
-
   @override
   void initState() {
     super.initState();
     _pages = widget.imageList.map((url) {
       return _buildImagePageItem(url);
     }).toList();
+
+    ///Slide show, it will stop after 1 round
     Timer.periodic(Duration(milliseconds: 500), (timer) {
       setState(() {
         int nextPage = _controller.page.round() + 1;
-        _controller.nextPage(duration: Duration(milliseconds: 500), curve: Curves.fastLinearToSlowEaseIn);
-
+        _controller.nextPage(
+            duration: Duration(milliseconds: 500),
+            curve: Curves.fastLinearToSlowEaseIn);
         if (nextPage == _pages.length) {
           _controller.jumpTo(0);
           timer.cancel();
         }
       });
-
     });
   }
 
@@ -50,7 +51,6 @@ class ImageSliderWidgetState extends State<SliderWidget> {
     _controller.dispose();
 
     super.dispose();
-
   }
 
   @override
@@ -68,6 +68,7 @@ class ImageSliderWidgetState extends State<SliderWidget> {
       ),
     );
   }
+
   int nextPage = 0;
   Widget _buildPagerViewSlider() {
     return PageView.builder(

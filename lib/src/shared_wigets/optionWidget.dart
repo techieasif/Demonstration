@@ -1,4 +1,4 @@
-import 'package:assignmentwebkulasif/src/appStyles/containerDecoration.dart';
+import '../../src/appStyles/containerDecoration.dart';
 import 'package:flutter/material.dart';
 class OptionWidget extends StatelessWidget {
   final String title;

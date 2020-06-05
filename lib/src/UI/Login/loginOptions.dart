@@ -1,11 +1,9 @@
-import 'package:assignmentwebkulasif/src/UI/Login/facebookLogin/FbLoginScreen.dart';
-import 'package:assignmentwebkulasif/src/appStyles/containerDecoration.dart';
-import 'package:assignmentwebkulasif/src/UI/Login/PhoneLogin/pages/phoneLoginForm.dart';
-import 'package:assignmentwebkulasif/src/UI/Login/googleLogin/googleSignIn.dart';
 import 'package:flutter/material.dart';
-
-import 'PhoneLogin/pages/phoneLoginNew.dart';
-import 'googleLogin/pages/auth.dart';
+import '../../../src/UI/Login/facebookLogin/FbLoginScreen.dart';
+import '../../../src/UI/Login/googleLogin/googleSignIn.dart';
+import '../../../src/appStyles/containerDecoration.dart';
+import '../../../src/shared_wigets/themeChange.dart';
+import 'PhoneLogin/pages/phoneLogin.dart';
 
 class LoginOptionsScreen extends StatelessWidget {
   static const loginOptions = '/login-option';
@@ -20,18 +18,28 @@ class LoginOptionsScreen extends StatelessWidget {
             children: <Widget>[
               loginOption(
                 () {
-//                  Navigator.pushNamed(context, PhoneLoginForm.phoneLoginForm);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LoginPage()));
                 },
                 Colors.green,
                 "Phone Login",
               ),
               loginOption(() {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => FBLogin()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => FBLogin()));
               }, Colors.blue, "Facebook Login"),
               loginOption(() {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => AuthGoogle()));
-              }, Colors.deepOrange, "Google Login")
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => GoogleLoginScreen()));
+              }, Colors.deepOrange, "Google Login"),
+              FlatButton(
+                onPressed: (){
+                  changeTheme(context);
+                },
+                child: Icon(Icons.lightbulb_outline),
+              )
             ],
           ),
         ),

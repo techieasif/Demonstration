@@ -8,6 +8,7 @@ class GoogleLoginScreen extends StatefulWidget {
 
 class _GoogleLoginScreenState extends State<GoogleLoginScreen> {
   bool _isLoggedIn = false;
+  bool showLoader = true;
   bool error = false;
   String errorMsg = "";
 
@@ -18,6 +19,7 @@ class _GoogleLoginScreenState extends State<GoogleLoginScreen> {
       await _googleSignIn.signIn();
       setState(() {
         _isLoggedIn = true;
+        showLoader = false;
       });
     } catch (err) {
       setState(() {
@@ -35,6 +37,12 @@ class _GoogleLoginScreenState extends State<GoogleLoginScreen> {
   }
 
   @override
+  void initState() {
+    _login();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: error
@@ -45,7 +53,7 @@ class _GoogleLoginScreenState extends State<GoogleLoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Image.network(
-                          _googleSignIn.currentUser.photoUrl,
+                          _googleSignIn.currentUser?.photoUrl,
                           height: 50.0,
                           width: 50.0,
                         ),
@@ -66,14 +74,27 @@ class _GoogleLoginScreenState extends State<GoogleLoginScreen> {
                         )
                       ],
                     )
-                  : Center(
-                      child: OutlineButton(
-                        child: Text("Login with Google"),
-                        onPressed: () {
-                          _login();
-                        },
-                      ),
-                    ),
+                  : showLoader
+                      ? Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Text("Something went wrong"),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              OutlineButton(
+                                child: Text("Login with Google"),
+                                onPressed: () {
+                                  _login();
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
             ),
     );
   }
