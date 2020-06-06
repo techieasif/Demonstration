@@ -41,10 +41,14 @@ class _DownloadImageState extends State<DownloadImage> {
       ),
       key: _scfKey,
       floatingActionButton: FloatingActionButton.extended(
-          label: Text("${_received ~/ 1024}/${_total ~/ 1024} KB"),
+          label: Text("${_received  ~/ 1024}/${_total ~/ 1024} KB"),
           icon: Icon(Icons.file_download),
           onPressed: () {
             if (_formKey.currentState.validate()) {
+              setState(() {
+                _received = 0;
+                _total = 0;
+              });
               _downloadImage();
             } else {
               setState(() {
@@ -96,7 +100,13 @@ class _DownloadImageState extends State<DownloadImage> {
     try {
       _response =
       await http.Client().send(http.Request('GET', Uri.parse(enteredUrl)));
+      if(_response.contentLength != null){
       _total = _response.contentLength;
+      }else{
+        _scfKey.currentState.showSnackBar(SnackBar(content: Text("looks like , not an exact download url"),));
+      }
+
+
 
       _response.stream.listen((value) {
         setState(() {
@@ -115,7 +125,7 @@ class _DownloadImageState extends State<DownloadImage> {
 
         final file = File("$_dir/webkul");
         await file.writeAsBytes(_bytes);
-        _scfKey.currentState.showSnackBar(SnackBar(
+        _scfKey.currentState?.showSnackBar(SnackBar(
           content: Text("Download Complete, location $file"),
         ));
       });
