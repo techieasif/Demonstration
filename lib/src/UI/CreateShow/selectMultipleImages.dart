@@ -3,7 +3,6 @@ import '../../../src/shared_wigets/themeChange.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_media_picker/multi_media_picker.dart';
 import 'package:video_player/video_player.dart';
-
 import 'imageSliderWidget.dart';
 
 class SelectMultipleImages extends StatefulWidget {
@@ -12,16 +11,17 @@ class SelectMultipleImages extends StatefulWidget {
 }
 
 class _SelectMultipleImagesState extends State<SelectMultipleImages> {
-  List<File> _imgs;
+  List<File> _userImages;
   bool isVideo = false;
   VideoPlayerController _controller;
   VoidCallback listener;
 
   _onImageButtonPressed(ImageSource source, {bool singleImage = false}) async {
-    var imgs;
+    var images;
     if (!isVideo) {
-      imgs = await MultiMediaPicker.pickImages(
+      images = await MultiMediaPicker.pickImages(
           source: source, singleImage: singleImage);
+      images = (images as List).reversed.toList();
     }
     setState(() {
       if (_controller != null) {
@@ -42,7 +42,7 @@ class _SelectMultipleImagesState extends State<SelectMultipleImages> {
           }
         });
       } else {
-        _imgs = imgs;
+        _userImages = images;
       }
     });
   }
@@ -92,14 +92,14 @@ class _SelectMultipleImagesState extends State<SelectMultipleImages> {
   }
 
   Widget _previewImages() {
-    if (_imgs == null) {
+    if (_userImages == null) {
       return Text('No images selected.');
-    } else if (_imgs.length > 5) {
+    } else if (_userImages.length > 5) {
       return Text(
           'More than 5 images Selected \n Please select up to 5 images');
     } else {
       return SliderWidget(
-        imageList: _imgs,
+        imageList: _userImages,
         imageBorderRadius: BorderRadius.circular(8.0),
       );
     }
@@ -109,7 +109,7 @@ class _SelectMultipleImagesState extends State<SelectMultipleImages> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Create Show"),
+        title: Text("Create Show \n  Tap n hold to select multiple images", style: TextStyle(fontSize: 12),),
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.lightbulb_outline),

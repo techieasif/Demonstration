@@ -51,23 +51,6 @@ class HomeScreen extends StatelessWidget {
                   screenSize: screenSize,
                   key: UniqueKey()),
               OptionWidget(
-                  fun: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SelectMultipleImages(),
-                      ),
-                    );
-                  },
-                  title: "Create Show",
-                  screenSize: screenSize,
-                  key: UniqueKey()),
-            ],
-          ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              OptionWidget(
                 fun: () {
                   Navigator.push(
                     context,
@@ -80,6 +63,12 @@ class HomeScreen extends StatelessWidget {
                 screenSize: screenSize,
                 key: UniqueKey(),
               ),
+
+            ],
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
               OptionWidget(
                 fun: () {
                   Navigator.push(
@@ -93,6 +82,18 @@ class HomeScreen extends StatelessWidget {
                 screenSize: screenSize,
                 key: UniqueKey(),
               ),
+              OptionWidget(
+                  fun: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SelectMultipleImages(),
+                      ),
+                    );
+                  },
+                  title: "Create Show",
+                  screenSize: screenSize,
+                  key: UniqueKey()),
             ],
           ),
         ],

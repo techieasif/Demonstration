@@ -37,6 +37,17 @@ class _MapsScreenState extends State<MapsScreen> {
 
   //getting user current location
   void _getLocation() async {
+    bool isLocationEnabled = await Geolocator().isLocationServiceEnabled();
+    if(isLocationEnabled){
+      _scfMapKey.currentState.showSnackBar(SnackBar(
+        content: Text("Location Service ON"),
+      ));
+    }else{
+      _scfMapKey.currentState.showSnackBar(SnackBar(
+        content: Text("Please enable location service"),
+      ));
+    }
+
     var currentLocation = await Geolocator()
         .getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
 
