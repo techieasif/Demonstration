@@ -16,7 +16,7 @@
         android:label="assignmentwebkulasif"
         android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCKsegaCb6xNLjb7gEXkiL2ZzlJsb511C8"/>
+            android:value="ENTER_KEYS_HERE"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
